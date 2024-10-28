@@ -10,7 +10,7 @@ describe("Core features", () => {
 
     const result = searchContent(query, content);
 
-    expect(result).toStrictEqual([[1, "TDD, Rocks"]]);
+    expect(result).toStrictEqual([{ line: 1, lineContent: "TDD, Rocks" }]);
   });
 
   test("Should return each line containing the query with multiple matches (Not in requirement)", () => {
@@ -20,8 +20,8 @@ describe("Core features", () => {
     const result = searchContent(query, content);
 
     expect(result).toStrictEqual([
-      [1, "TDD, Rocks"],
-      [2, "TDD, Rocks"],
+      { line: 1, lineContent: "TDD, Rocks" },
+      { line: 2, lineContent: "TDD, Rocks" },
     ]);
   });
 
@@ -31,7 +31,7 @@ describe("Core features", () => {
 
     const result = searchContent(query, content);
 
-    expect(result).toEqual([[0, ""]]);
+    expect(result).toEqual([]);
   });
 
   test("The query should be case-insensitive", () => {
@@ -40,12 +40,12 @@ describe("Core features", () => {
 
     const result = searchContent(query, content);
 
-    expect(result).toEqual([[1, "TDD, Rocks"]]);
+    expect(result).toEqual([{ line: 1, lineContent: "TDD, Rocks" }]);
   });
 
   test.each([
-    { content: "TDD, Rocks\nPizza is not", query: "TDD", expectedResult: [[1, "TDD, Rocks"]] },
-    { content: "Pizza is not\nTDD, Rocks", query: "TDD", expectedResult: [[2, "TDD, Rocks"]] },
+    { content: "TDD, Rocks\nPizza is not", query: "TDD", expectedResult: [{ line: 1, lineContent: "TDD, Rocks" }] },
+    { content: "Pizza is not\nTDD, Rocks", query: "TDD", expectedResult: [{ line: 2, lineContent: "TDD, Rocks" }] },
   ])("The line number should be provided with the search result", ({ content, query, expectedResult }) => {
     const result = searchContent(query, content);
 

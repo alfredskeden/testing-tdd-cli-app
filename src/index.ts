@@ -13,10 +13,14 @@ program
     try {
       const content = await readFileAsync(fileUrl);
 
-      const test = searchContent(query, content);
+      const searchedContent = searchContent(query, content);
 
-      test.forEach((line) => {
-        console.log(`${line[0]}: ${line[1]}`);
+      if (!searchedContent.length) {
+        console.log("No lines found");
+      }
+
+      searchedContent.forEach((line) => {
+        console.log(`${line.line}: ${line.lineContent}`);
       });
     } catch (error) {
       console.log(error);
