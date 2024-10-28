@@ -1,0 +1,5 @@
+Happy panda that works well
+if we are doing this right
+it should work as we want
+because TDD rocks!
+This makes me happy panda

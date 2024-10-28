@@ -1,0 +1,27 @@
+{
+  "name": "my-cli-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "start": "tsc && node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.8.1",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "fs": "^0.0.1-security",
+    "ts-node": "^10.9.2"
+  }
+}
