@@ -22,13 +22,13 @@ describe("searchContent", () => {
     ]);
   });
 
-  test("Should return no line when there is no match for the query", () => {
+  test("Should return 'No line found' when there is no match for the query", () => {
     const query = "pizza";
     const content = "TDD, Rocks";
 
     const result = searchContent(query, content);
 
-    expect(result).toEqual([]);
+    expect(result).toEqual([{ lineContent: "No lines found" }]);
   });
 
   test("The query should be case-insensitive", () => {
@@ -51,5 +51,19 @@ describe("searchContent", () => {
 });
 
 describe("searchContent errors", () => {
-  test("", () => {});
+  test("Should return an error if one of the query parameter was undefined", () => {
+    const query = undefined;
+    const content = "TDD, Rocks";
+    const result = searchContent(query, content);
+
+    expect(result).toEqual([{ lineContent: "Query is missing" }]);
+  });
+
+  test("Should return an error if one of the content parameter was undefined", () => {
+    const query = "tdd";
+    const content = undefined;
+    const result = searchContent(query, content);
+
+    expect(result).toEqual([{ lineContent: "Content is missing" }]);
+  });
 });

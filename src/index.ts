@@ -15,12 +15,12 @@ program
 
       const searchedContent = searchContent(query, content);
 
-      if (!searchedContent.length) {
-        console.log("No lines found");
-      }
-
       searchedContent.forEach((line) => {
-        console.log(`${line.line}: ${line.lineContent}`);
+        if (!line.line) {
+          console.log(line.lineContent);
+        } else {
+          console.log(`${line.line}: ${line.lineContent}`);
+        }
       });
     } catch (error) {
       console.log(error);
